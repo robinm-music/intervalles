@@ -1,9 +1,57 @@
+<!-- <!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>intervalles</title>
+  <script type="module">
+    import { createClient } from '@supabase/supabase-js';
+    const supabase = createClient('https://cmcjjttrvuqndtfbkivu.supabase.co', 'sb_publishable_mDhcyM3lbaibgg7UHgWmeQ_zhiGyiVb');
+    globalThis.supabase = supabase;
+    async function signUpNewUser(email, pwd) {
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: pwd,
+        // options: {
+        //   emailRedirectTo: 'https://example.com/welcome',
+        // },
+      });
+      return { data, error };
+    };
+    async function signInWithEmail(email, pwd) {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: pwd,
+      });
+      return { data, error };
+    }
+    globalThis.signUpNewUser = signUpNewUser;
+    globalThis.signInWithEmail = signInWithEmail;
+    globalThis.insertUser = async (user, nickname) => {
+      let row = {
+        user_id: user.id,
+        nickname
+      };
+      return await supabase.from('users').insert(row);
+    };
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html> -->
+
 <html>
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./reset.css" rel="stylesheet" />
+  <link href="/reset.css" rel="stylesheet" />
   <style>
     body {
       background-color: #b6deda;
@@ -78,7 +126,7 @@
     function load() {
       for (let oct = startOct; oct < endOct; oct++) {
         pitches.forEach(pitch => {
-          let audioElt = new Audio('./src/assets/piano-mp3/' + pitch + oct + '.mp3');
+          let audioElt = new Audio('/intervalles/src/assets/piano-mp3/' + pitch + oct + '.mp3');
           audioElt.addEventListener('canplaythrough', () => {
             ++loaded;
           });
